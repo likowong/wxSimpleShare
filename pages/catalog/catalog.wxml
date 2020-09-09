@@ -1,30 +1,54 @@
 <view class="container">
-  <view class="search">
-    <navigator url="/pages/search/search" class="input">
-      <image class="icon"></image>
-      <text class="txt">商品搜索, 共{{goodsCount}}款好物</text>
-    </navigator>
-  </view>
-  <view class="catalog">
-    <scroll-view class="nav" scroll-y="true">
-        <view class="item {{ currentCategory.id == item.id ? 'active' : ''}}" wx:for="{{navList}}"  data-id="{{item.id}}" data-index="{{index}}" bindtap="switchCate">{{item.name}}</view>
-    </scroll-view>
-    <scroll-view class="cate" scroll-y="true">
-        <navigator url="url" class="banner">
-            <image class="image" src="{{currentCategory.wap_banner_url}}"></image>
-            <view class="txt">{{currentCategory.front_name}}</view>
+    <view class="search">
+        <navigator url="/pages/search/search" class="input">
+            <image class="icon"></image>
+            <text class="txt">商品搜索</text>
         </navigator>
-        <view class="hd">
-            <text class="line"></text>
-            <text class="txt">{{currentCategory.name}}分类</text>
-            <text class="line"></text>
+    </view>
+    <!--    <view wx:for="{{newGoods}}" wx:for-index="index" wx:for-item="item"-->
+    <!--          wx:key="{{item.id}}">-->
+    <!--        <view class="a-section a-topic">-->
+    <!--            <view class="h">-->
+    <!--                <view>-->
+    <!--                    <navigator url="../topic/topic" open-type="switchTab">-->
+    <!--                        <text class="txt">{{item.materialName}}</text>-->
+    <!--                    </navigator>-->
+    <!--                </view>-->
+    <!--            </view>-->
+    <!--            <view class="b">-->
+    <!--                <view class="item" wx:for="{{item.goodsData}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">-->
+    <!--                    <navigator url="../goods/goods?id={{item.id}}">-->
+    <!--                        <image class="img" src="{{item.pict_url}}" background-size="cover"></image>-->
+    <!--                        <text class="name">{{item.level_one_category_name}}{item.coupon_info}}</text>-->
+    <!--                        <text class="price">￥{{item.reserve_price}} 销量{{item.volume}}</text>-->
+    <!--                        <text class="price">卷￥{{item.coupon_amount}}</text>-->
+    <!--                        <text class="price"></text>-->
+    <!--                    </navigator>-->
+    <!--                </view>-->
+    <!--            </view>-->
+    <!--        </view>-->
+    <!--    </view>-->
+    <view wx:for="{{newGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
+        <view class="a-section a-new">
+            <view class="h">
+                <view>
+                    <navigator url="../newGoods/newGoods">
+                        <text class="txt">{{item.materialName}}</text>
+                    </navigator>
+                </view>
+            </view>
+            <view class="b">
+                <view class="item" wx:for="{{item.goodsData}}" wx:for-index="index" wx:for-item="goodsKey"
+                      wx:key="{{item.id}}">
+                    <navigator url="">
+                        <image class="img" src="{{goodsKey.pict_url}}" background-size="cover"></image>
+                        <text class="name">{{goodsKey.level_one_category_name}}{item.coupon_info}}</text>
+                        <text class="price">￥{{goodsKey.reserve_price}} 销量{{goodsKey.volume}}</text>
+                        <text class="price">卷￥{{goodsKey.coupon_amount}}</text>
+                        <text class="price"></text>
+                    </navigator>
+                </view>
+            </view>
         </view>
-        <view class="bd">
-            <navigator url="/pages/category/category?id={{item.id}}" class="item {{(index+1) % 3 == 0 ? 'last' : ''}}" wx:for="{{currentCategory.subCategoryList}}">
-                <image class="icon" src="{{item.wap_banner_url}}"></image>
-                <text class="txt">{{item.name}}</text>
-            </navigator>
-        </view>
-    </scroll-view>
-  </view>
+    </view>
 </view>

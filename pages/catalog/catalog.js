@@ -2,88 +2,68 @@ var util = require('../../utils/util.js');
 var api = require('../../config/api.js');
 
 Page({
-  data: {
-    navList: [],
-    categoryList: [],
-    currentCategory: {},
-    scrollLeft: 0,
-    scrollTop: 0,
-    goodsCount: 0,
-    scrollHeight: 0
-  },
-  onLoad: function (options) {
-    this.getCatalog();
-  },
+    data: {
+        newGoods: [],
+    },
+    onLoad: function (options) {
+        this.getCatalog();
+    },
 
-  onPullDownRefresh(){
-      // 显示顶部刷新图标
-      wx.showNavigationBarLoading();
-      // 增加下拉刷新数据的功能
-      var self = this;
-      this.getCatalog();
-      // 隐藏导航栏加载框
-      wx.hideNavigationBarLoading();
-      // 停止下拉动作
-      wx.stopPullDownRefresh();
-  },
-  
-  getCatalog: function () {
-    //CatalogList
-    let that = this;
-    wx.showLoading({
-      title: '加载中...',
-    });
-    util.request(api.CatalogList).then(function (res) {
-        that.setData({
-          navList: res.data.categoryList,
-          currentCategory: res.data.currentCategory
-        });
-        wx.hideLoading();
-      });
-    util.request(api.GoodsCount).then(function (res) {
-      that.setData({
-        goodsCount: res.data.goodsCount
-      });
-    });
+    onPullDownRefresh() {
+        // 显示顶部刷新图标
+        wx.showNavigationBarLoading();
+        // 增加下拉刷新数据的功能
+        var self = this;
+        this.getCatalog();
+        // 隐藏导航栏加载框
+        wx.hideNavigationBarLoading();
+        // 停止下拉动作
+        wx.stopPullDownRefresh();
+    },
 
-  },
-  getCurrentCategory: function (id) {
-    let that = this;
-    util.request(api.CatalogCurrent, { id: id })
-      .then(function (res) {
-        that.setData({
-          currentCategory: res.data.currentCategory
+    getCatalog: function () {
+        let that = this;
+        let data = new Object();
+        wx.showLoading({
+            title: '加载中...',
         });
-      });
-  },
-  onReady: function () {
-    // 页面渲染完成
-  },
-  onShow: function () {
-    // 页面显示
-  },
-  onHide: function () {
-    // 页面隐藏
-  },
-  onUnload: function () {
-    // 页面关闭
-  },
-  getList: function () {
-    var that = this;
-    util.request(api.ApiRootUrl + 'api/catalog/' + that.data.currentCategory.cat_id)
-      .then(function (res) {
-        that.setData({
-          categoryList: res.data,
+        util.request(api.IndexUrlValidCategory, '', 'POST').then(function (res) {
+            wx.hideLoading();
+            if (res.status === 1) {
+                for (let item in res.content) {
+                    let newGood = {
+                        materialId: res.content[item].materialId,
+                        pageNo: 1,
+                        pageSize: 10,
+                        materialName: res.content[item].materialName
+                    }
+                    util.request(api.IndexUrlMaterial, newGood, 'POST').then(function (res) {
+                        if (res.status === 1) {
+                            let newGoods = [];
+                            let goods = JSON.parse(res.content).tbk_dg_optimus_material_response.result_list.map_data;
+                            let goodsData = {materialName: newGood.materialName, goodsData: goods}
+                            newGoods.push(goodsData);
+                            data.newGoods = that.data.newGoods.concat(newGoods);
+                            that.setData(data);
+                        }
+                    });
+                }
+            }
         });
-      });
-  },
-  switchCate: function (event) {
-    var that = this;
-    var currentTarget = event.currentTarget;
-    if (this.data.currentCategory.id == event.currentTarget.dataset.id) {
-      return false;
+    },
+    onReady: function () {
+        // 页面渲染完成
     }
-
-    this.getCurrentCategory(event.currentTarget.dataset.id);
-  }
+    ,
+    onShow: function () {
+        // 页面显示
+    }
+    ,
+    onHide: function () {
+        // 页面隐藏
+    }
+    ,
+    onUnload: function () {
+        // 页面关闭
+    }
 })

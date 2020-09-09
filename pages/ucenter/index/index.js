@@ -41,20 +41,20 @@ Page({
         // 页面关闭
     },
     bindGetUserInfo(e) {
-      let userInfo = wx.getStorageSync('userInfo');
-      let token = wx.getStorageSync('token');
+        let userInfo = wx.getStorageSync('userInfo');
+        let token = wx.getStorageSync('token');
 
-      if (userInfo && token) {
-        return;
-      }
-        if (e.detail.userInfo){
+        if (userInfo && token) {
+            return;
+        }
+        if (e.detail.userInfo) {
             //用户按了允许授权按钮
             user.loginByWeixin(e.detail).then(res => {
                 this.setData({
-                    userInfo: res.data.userInfo
+                    userInfo: res.content
                 });
-                app.globalData.userInfo = res.data.userInfo;
-                app.globalData.token = res.data.token;
+                app.globalData.userInfo = res.content;
+                app.globalData.token = res.content.token;
             }).catch((err) => {
                 console.log(err)
             });
@@ -70,10 +70,10 @@ Page({
                                 if (res.authSetting["scope.userInfo"]) {////如果用户重新同意了授权登录
                                     user.loginByWeixin(e.detail).then(res => {
                                         this.setData({
-                                            userInfo: res.data.userInfo
+                                            userInfo: res.content
                                         });
-                                        app.globalData.userInfo = res.data.userInfo;
-                                        app.globalData.token = res.data.token;
+                                        app.globalData.userInfo = res.content;
+                                        app.globalData.token = res.content.token;
                                     }).catch((err) => {
                                         console.log(err)
                                     });
@@ -86,7 +86,7 @@ Page({
         }
     },
 
-    onPullDownRefresh(){
+    onPullDownRefresh() {
         // 显示顶部刷新图标
         wx.showNavigationBarLoading();
         // 增加下拉刷新数据的功能
@@ -117,11 +117,11 @@ Page({
 
     },
 
-    aboutUs : function () {
+    aboutUs: function () {
         wx.showModal({
-          title: '联系我们',
-          content: '本小程序商城系统为临时测试所用，如有问题请与开发者【微信: hq56567788】联系，祝大家使用愉快！',
-          showCancel:false
+            title: '联系我们',
+            content: '【微信&手机】联系: 15010343670，祝大家使用愉快！',
+            showCancel: false
         })
     },
 })

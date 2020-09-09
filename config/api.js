@@ -1,17 +1,17 @@
-var NewApiRootUrl = 'http://192.168.0.9:8000/';
+var NewApiRootUrl = 'http://taobao.fastgo.icu/api/';
 
 module.exports = {
     IndexUrlNewGoods: NewApiRootUrl + 'index/newGoods', //
     IndexUrlHotGoods: NewApiRootUrl + 'index/hotGoods', //首页数据接口
-    IndexUrlTopic: NewApiRootUrl + 'index/topic', //首页数据接口
+    IndexUrlMaterial: NewApiRootUrl + '/data/config/v1/MaterialService/getListMaterial', //首页数据接口
     IndexUrlBrand: NewApiRootUrl + 'index/brand', //首页数据接口IndexUrlChannel
-    IndexUrlCategory: NewApiRootUrl + 'index/category', //首页数据接口IndexUrlChannel
-    IndexUrlBanner: NewApiRootUrl + 'index/banner', //首页数据接口IndexUrlChannel
-    IndexUrlChannel: NewApiRootUrl + 'index/channel', //首页数据接口IndexUrlChannel
-    CatalogList: NewApiRootUrl + 'catalog/index',  //分类目录全部分类数据接口
+    IndexUrlBanner: NewApiRootUrl + 'data/config/v1/BannerService/getListBanner', //首页数据接口IndexUrlChannel
+    IndexUrlValidCategory: NewApiRootUrl + 'data/config/v1/MaterialService/getValidListCategoryVo', //首页数据接口IndexUrlChannel
+    IndexUrlCategory: NewApiRootUrl + 'data/config/v1/MaterialService/getListCategoryVo', //首页数据接口IndexUrlChannel
+    CatalogList: NewApiRootUrl + 'data/config/v1/MaterialService/getListCategoryVo',  //分类目录全部分类数据接口
     CatalogCurrent: NewApiRootUrl + 'catalog/current',  //分类目录当前分类数据接口
 
-    AuthLoginByWeixin: NewApiRootUrl + 'auth/login_by_weixin', //微信登录
+    AuthLoginByWeixin: NewApiRootUrl + 'data/config/v1/MemberService/login', //微信登录
 
     GoodsCount: NewApiRootUrl + 'goods/count',  //统计商品总数
     GoodsList: NewApiRootUrl + 'goods/list',  //获得商品列表
@@ -69,7 +69,7 @@ module.exports = {
     FeedbackAdd: NewApiRootUrl + 'feedback/save', //添加反馈
     SmsCode: NewApiRootUrl + 'user/smscode', //发送短信
     BindMobile: NewApiRootUrl + 'user/bindMobile', //绑定手机
-    Login: NewApiRootUrl + 'auth/login', //账号登录
+    Login: NewApiRootUrl + 'data/config/v1/MemberService/login', //账号登录
     Register: NewApiRootUrl + 'register/register', //注册
     CouponList: NewApiRootUrl + 'coupon/list', // 优惠券列表
     GoodsCouponList: NewApiRootUrl + 'coupon/listByGoods', // 商品优惠券列表   
