@@ -21,7 +21,7 @@
         <view class="item">
             <navigator url="" class="a">
                 <text class="icon coupon"></text>
-                <text class="txt">设置体现账户</text>
+                <text class="txt">设置提现账户</text>
             </navigator>
         </view>
         <view class="item" v-if="hasMobile != ''">

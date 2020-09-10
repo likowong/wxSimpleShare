@@ -15,7 +15,6 @@ Page({
         duration: 1000, //  滑动动画时长1s
     },
     onLoad: function (options) {
-        debugger
         // 页面初始化 options为页面跳转所带来的参数
         var that = this;
         let twdUrl = decodeURIComponent(options.twdUrl)

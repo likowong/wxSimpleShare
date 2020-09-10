@@ -121,11 +121,10 @@ Page({
         this.setData({
             historyKeyword: []
         })
-
-        util.request(api.SearchClearHistory, {}, 'POST')
-            .then(function (res) {
-                console.log('清除成功');
-            });
+        wx.setStorage({
+            key: "historyKeyword",
+            data: []
+        })
     }
     ,
     getGoodsList: function () {
