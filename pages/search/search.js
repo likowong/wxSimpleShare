@@ -130,7 +130,11 @@ Page({
     getGoodsList: function () {
         let that = this;
         let data = new Object();
-        if (!that.data.keyword.trim()) {
+        let key = that.data.keyword.trim()
+        if (!key) {
+            return;
+        }
+        if (key = null || key == undefined || key == 'undefined' || key == '' || key == "") {
             return;
         }
         let reqData = {pageNo: that.data.pageNo, pageSize: 10, text: that.data.keyword, sort: that.data.sort}
@@ -147,9 +151,9 @@ Page({
     }
     ,
     onKeywordTap: function (event) {
-
-        this.getSearchResult(event.target.dataset.keyword);
-
+        if (event.target.dataset.keyword) {
+            this.getSearchResult(event.target.dataset.keyword);
+        }
     }
     ,
     getSearchResult(keyword) {
