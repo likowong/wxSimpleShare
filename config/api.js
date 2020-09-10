@@ -1,4 +1,7 @@
-var NewApiRootUrl = 'http://taobao.fastgo.icu/api/';
+// 线上环境
+var NewApiRootUrl = 'https://fastgo.icu/share/';
+// 开发环境
+//var NewApiRootUrl = 'http://192.168.0.2:8000/';
 
 module.exports = {
     IndexUrlNewGoods: NewApiRootUrl + 'index/newGoods', //
@@ -16,9 +19,10 @@ module.exports = {
     GoodsCount: NewApiRootUrl + 'goods/count',  //统计商品总数
     GoodsList: NewApiRootUrl + 'goods/list',  //获得商品列表
     GoodsCategory: NewApiRootUrl + 'goods/category',  //获得分类数据
-    GoodsDetail: NewApiRootUrl + 'goods/detail',  //获得商品的详情
+    GoodsDetail: NewApiRootUrl + 'data/config/v1/MaterialService/getGoodsDetail',  //获得商品的详情
+    createTpw: NewApiRootUrl + 'data/config/v1/MaterialService/createTpw',  //生成淘口令
     GoodsNew: NewApiRootUrl + 'goods/new',  //新品
-    GoodsHot: NewApiRootUrl + 'goods/hot',  //热门
+    GoodsHot: NewApiRootUrl + 'data/config/v1/MaterialService/getHotKey',  //热门
     GoodsRelated: NewApiRootUrl + 'goods/related',  //商品详情页的关联商品（大家都在看）
 
     BrandList: NewApiRootUrl + 'brand/list',  //品牌列表
@@ -49,7 +53,7 @@ module.exports = {
 
     SearchIndex: NewApiRootUrl + 'search/index',  //搜索页面数据
     SearchResult: NewApiRootUrl + 'search/result',  //搜索数据
-    SearchHelper: NewApiRootUrl + 'search/helper',  //搜索帮助
+    SearchHelper: NewApiRootUrl + 'data/config/v1/MaterialService/searchGoods',  //搜索数据
     SearchClearHistory: NewApiRootUrl + 'search/clearhistory',  //搜索帮助
 
     AddressList: NewApiRootUrl + 'address/list',  //收货地址列表

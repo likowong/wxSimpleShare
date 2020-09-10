@@ -1,28 +1,65 @@
-<view class="container">
-    <view class="brand-info">
-        <view class="name">
-            <image class="img" src="{{brand.app_list_pic_url}}" background-size="cover"></image>
-            <view class="info-box">
-                <view class="info">
-                    <text class="txt">{{brand.name}}</text>
-                    <text class="line"></text>
+<scroll-view class="container" style="height: {{winHeight}}rpx" scroll-y="true">
+    <view wx:if="{{!openAttr}}">
+        <swiper class="goodsimgs" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+            <swiper-item wx:for="{{brandData.small_images.string}}" wx:key="{{item.id}}">
+                <image src="{{item}}" background-size="cover"></image>
+            </swiper-item>
+        </swiper>
+        <view class="service-policy">
+            <view class="item">{{brandData.cat_leaf_name}}</view>
+            <view class="item">{{brandData.cat_name}}</view>
+            <text class="item">{{brandData.kuadian_promotion_info}}</text>
+        </view>
+        <view class="goods-info">
+            <view class="c">
+                <text class="name">{{brandData.title}}</text>
+                <text class="price">优惠卷￥{{couponAmount}}</text>
+            </view>
+        </view>
+        <view class="comments" wx:if="{{comment.count > 0}}">
+            <view class="h">
+                <navigator url="../comment/comment?valueId={{goods.id}}&typeId=0">
+                    <text class="t">评价({{comment.count > 999 ? '999+' : comment.count}})</text>
+                    <text class="i">查看全部</text>
+                </navigator>
+            </view>
+            <view class="b">
+                <view class="item">
+                    <view class="info">
+                        <view class="user">
+                            <image src="{{comment.data.avatar}}"></image>
+                            <text>{{comment.data.nickname}}</text>
+                        </view>
+                        <view class="time">{{comment.data.add_time}}</view>
+                    </view>
+                    <view class="content">
+                        {{comment.data.content}}
+                    </view>
+                    <view class="imgs" wx:if="{{comment.data.pic_list.length > 0}}">
+                        <image class="img" wx:for="{{comment.data.pic_list}}" wx:key="{{item.id}}" src="{{item.pic_url}}"></image>
+                    </view>
                 </view>
             </view>
         </view>
-        <view class="desc">
-            {{brand.simple_desc}}
+        <view class="goods-attr">
+            <view class="t">商品参数</view>
+            <view class="l">
+                <view class="item" wx:for="{{attribute}}" wx:key="{{item.name}}">
+                    <text class="left">{{item.name}}</text>
+                    <text class="right">{{item.value}}</text>
+                </view>
+            </view>
         </view>
-    </view>
 
-    <view class="cate-item">
-        <view class="b">
-            <block wx:for="{{goodsList}}" wx:for-index="iindex" wx:for-item="iitem">
-            <navigator class="item {{iindex % 2 == 0 ? 'item-b' : ''}}" url="../goods/goods?id={{iitem.id}}">
-                <image class="img" src="{{iitem.list_pic_url}}" background-size="cover"></image>
-                <text class="name">{{iitem.name}}</text>
-                <text class="price">￥{{iitem.retail_price}}</text>
-            </navigator>
-            </block>
+        <view class="detail">
+            <import src="../../lib/wxParse/wxParse.wxml" />
+            <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}" />
         </view>
     </view>
+</scroll-view>
+        <!-- 底部悬浮栏 -->
+<view class="detail-nav">
+    <view class="line_nav"></view>
+    <button class="button-green" open-type="share" formType="submit">分享</button>
+    <button class="button-red" bindtap="createTwd" formType="submit">领取优惠卷</button>
 </view>

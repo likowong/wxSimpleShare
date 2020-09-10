@@ -1,3 +1,4 @@
+<wxs module="filter" src="../index/index.wxs"></wxs>
 <view class="container">
     <view class="search">
         <navigator url="/pages/search/search" class="input">
@@ -38,14 +39,13 @@
                 </view>
             </view>
             <view class="b">
-                <view class="item" wx:for="{{item.goodsData}}" wx:for-index="index" wx:for-item="goodsKey"
-                      wx:key="{{item.id}}">
-                    <navigator url="">
+                <view class="item" wx:for="{{item.goodsData}}" wx:for-index="index" wx:for-item="goodsKey" wx:key="{{item.id}}">
+                    <navigator
+                            url="/pages/brandDetail/brandDetail?brandId={{goodsKey.item_id}}&couponAmount={{goodsKey.coupon_amount}}&twdUrl={{filter.urlEncode(goodsKey.coupon_share_url)}}">
                         <image class="img" src="{{goodsKey.pict_url}}" background-size="cover"></image>
-                        <text class="name">{{goodsKey.level_one_category_name}}{item.coupon_info}}</text>
+                        <text class="name">{{goodsKey.level_one_category_name}}{{goodsKey.coupon_info}}</text>
                         <text class="price">￥{{goodsKey.reserve_price}} 销量{{goodsKey.volume}}</text>
                         <text class="price">卷￥{{goodsKey.coupon_amount}}</text>
-                        <text class="price"></text>
                     </navigator>
                 </view>
             </view>

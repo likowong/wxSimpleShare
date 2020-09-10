@@ -1,0 +1,10 @@
+// 支持es4语法
+var filter = {
+    urlEncode: function (url) {
+        return encodeURIComponent(url)
+    }
+}
+// 导出对外暴露的属性
+module.exports = {
+    urlEncode: filter.urlEncode
+}

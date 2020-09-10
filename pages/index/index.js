@@ -142,39 +142,6 @@ Page({
                 that.setData(data);
             }
         });
-
-        // util.request(api.IndexUrlHotGoods).then(function (res) {
-        //     if (res.errno === 0) {
-        //         data.hotGoods = res.data.hotGoodsList
-        //         that.setData(data);
-        //     }
-        // });
-        // let materialData = {
-        //     materialId: 32366,
-        //     pageNo: 1,
-        //     pageSize: 10
-        // }
-        // util.request(api.IndexUrlMaterial,materialData,'POST').then(function (res) {
-        //     debugger;
-        //     if (res.status === 1) {
-        //         data.material = JSON.parse(res.content).tbk_dg_optimus_material_response.result_list.map_data;
-        //         that.setData(data);
-        //     }
-        // });
-        // util.request(api.IndexUrlBrand).then(function (res) {
-        //     if (res.errno === 0) {
-        //         data.brand = res.data.brandList
-        //         that.setData(data);
-        //     }
-        // });
-        // util.request(api.IndexUrlCategory).then(function (res) {
-        //     if (res.errno === 0) {
-        //         data.floorGoods = res.data.categoryList
-        //         that.setData(data);
-        //     }
-        // });
-
-
     },
     onLoad: function (options) {
         this.getIndexData();

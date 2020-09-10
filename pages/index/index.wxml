@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<wxs module="filter" src="./index.wxs"></wxs>
 <view class="container">
     <swiper class="banner" indicator-dots="true" autoplay="true" circular="true" interval="3000" duration="1000">
         <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
@@ -8,60 +9,13 @@
         </swiper-item>
     </swiper>
     <view class="m-menu">
-        <navigator class="item" url="{{item.materialUrl}}" wx:for="{{validMaterial}}" wx:key="{{item.id}}">
+        <navigator class="item" url="/pages/catalog/catalog" wx:for="{{validMaterial}}" wx:key="{{item.id}}">
             <navigator url="/pages/catalog/catalog">
                 <image src="{{item.iconUrl}}" background-size="cover"></image>
+                <text>{{item.materialName}}</text>
             </navigator>
-            <text>{{item.materialName}}</text>
         </navigator>
     </view>
-
-    <!--  <view class="a-section a-brand">-->
-    <!--    <view class="h">-->
-    <!--      <navigator url="../brand/brand">-->
-    <!--        <text class="txt">品牌制造商直供</text>-->
-    <!--      </navigator>-->
-    <!--    </view>-->
-    <!--    <view class="b">-->
-    <!--      <view class="item item-1" wx:for="{{brand}}" wx:key="item.id">-->
-    <!--        <navigator url="/pages/brandDetail/brandDetail?id={{item.id}}">-->
-    <!--          <view class="wrap">-->
-    <!--            <image class="img" src="{{item.new_pic_url}}" mode="aspectFill"></image>-->
-    <!--            <view class="mt">-->
-    <!--              <text class="brand">{{item.name}}</text>-->
-    <!--              <text class="price">{{item.floor_price}}</text>-->
-    <!--              <text class="unit">元起</text>-->
-    <!--            </view>-->
-    <!--          </view>-->
-    <!--        </navigator>-->
-    <!--      </view>-->
-    <!--    </view>-->
-    <!--  </view>-->
-
-    <!--  <view class="a-section a-topic" wx:if="topics.length > 0">-->
-    <!--    <view class="h">-->
-    <!--      <view>-->
-    <!--      <navigator url="../topic/topic" open-type="switchTab">-->
-    <!--        <text class="txt">专题精选</text>-->
-    <!--        </navigator>-->
-    <!--      </view>-->
-    <!--    </view>-->
-    <!--    <view class="b">-->
-    <!--      <scroll-view scroll-x="true" class="list">-->
-    <!--        <view class="item" wx:for="{{material}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">-->
-    <!--          <navigator url="../topicDetail/topicDetail?id={{item.id}}">-->
-    <!--            <image class="img" src="{{item.pict_url}}" background-size="cover"></image>-->
-    <!--            <view class="np">-->
-    <!--              <text class="name">{{item.title}}</text>-->
-    <!--              <text class="price">￥{{item.price_info}}元起</text>-->
-    <!--            </view>-->
-    <!--            <text class="desc">{{item.subtitle}}</text>-->
-    <!--          </navigator>-->
-    <!--        </view>-->
-    <!--      </scroll-view>-->
-    <!--    </view>-->
-    <!--  </view>-->
-
     <view class="a-section a-new" wx:if="{{newGoods.length > 0}}">
         <view class="h">
             <view>
@@ -72,12 +26,11 @@
         </view>
         <view class="b">
             <view class="item" wx:for="{{newGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
-                <navigator url="">
+                <navigator url="/pages/brandDetail/brandDetail?brandId={{item.item_id}}&couponAmount={{item.coupon_amount}}&twdUrl={{filter.urlEncode(item.coupon_share_url)}}">
                     <image class="img" src="{{item.pict_url}}" background-size="cover"></image>
-                    <text class="name">{{item.level_one_category_name}}{item.coupon_info}}</text>
+                    <text class="name">{{item.level_one_category_name}}{{item.coupon_info}}</text>
                     <text class="price">￥{{item.reserve_price}} 销量{{item.volume}}</text>
-                    <text class="price">卷￥{{item.coupon_amount}}</text>
-                    <text class="price"></text>
+                    <text class="price" wx:wx:if="{{item.coupon_amount != ''}}">卷￥{{item.coupon_amount}}</text>
                 </navigator>
             </view>
         </view>
