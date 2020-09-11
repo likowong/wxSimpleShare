@@ -4,32 +4,30 @@
                background-size="cover"></image>
         <text class="userinfo-nickname">{{ userInfo.nickName }}</text>
         <text wx:if="{{userInfo.userName}}" class="userinfo-username">{{ userInfo.userName }}</text>
-        <text wx:else class="userinfo-username2">余额:0.00￥</text>
+<!--        <text wx:else class="userinfo-username2">余额:0.00￥</text>-->
     </button>
     <view style="height:20rpx;background: #eee;width:100%;"></view>
     <view class="my-item" style='background:none;display:flex;flex-direction:column;height:auto;'></view>
 
     <view class="user-menu">
-        <view class="item">
-            <navigator url="" class="a">
-                <text class="icon order"></text>
-                <text class="txt">我的订单</text>
-            </navigator>
-        </view>
-
-
-        <view class="item">
-            <navigator url="" class="a">
-                <text class="icon coupon"></text>
-                <text class="txt">设置提现账户</text>
-            </navigator>
-        </view>
-        <view class="item" v-if="hasMobile != ''">
-            <navigator url="" class="a">
-                <text class="icon phone"></text>
-                <text class="txt">绑定手机</text>
-            </navigator>
-        </view>
+<!--        <view class="item">-->
+<!--            <navigator url="" class="a">-->
+<!--                <text class="icon order"></text>-->
+<!--                <text class="txt">我的订单</text>-->
+<!--            </navigator>-->
+<!--        </view>-->
+<!--        <view class="item">-->
+<!--            <navigator url="" class="a">-->
+<!--                <text class="icon coupon"></text>-->
+<!--                <text class="txt">设置账户</text>-->
+<!--            </navigator>-->
+<!--        </view>-->
+<!--        <view class="item" v-if="hasMobile != ''">-->
+<!--            <navigator url="" class="a">-->
+<!--                <text class="icon phone"></text>-->
+<!--                <text class="txt">绑定手机</text>-->
+<!--            </navigator>-->
+<!--        </view>-->
         <view class="item">
             <navigator url="" class="a">
                 <text class="icon address"></text>
