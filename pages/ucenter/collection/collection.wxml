@@ -1,0 +1,32 @@
+<wxs module="filter" src="../../index/index.wxs"></wxs>
+
+<view class="container">
+
+    <view class="orders">
+        <navigator url="/pages/brandDetail/brandDetail?brandId={{item.goodsId}}&couponAmount={{item.couponAmount}}&twdUrl={{filter.urlEncode(item.goodsImgShareUrl)}}" class="order"
+                   wx:for="{{collectionList}}" wx:key="{{item.id}}">
+            <view class="h">
+                <view class="l">商品名：{{filter.subString(item.goodsTitle)}}</view>
+            </view>
+            <view class="h">
+                <view class="l">优惠券：{{item.couponAmount}}￥</view>
+            </view>
+            <view class="h">
+                <text class="name">收藏时间：{{filter.formatTime(item.createTime)}}</text>
+            </view>
+            <view class="img">
+                <image src="{{item.goodsImg}}"></image>
+            </view>
+        </navigator>
+    </view>
+
+    <view wx:if="{{collectionList.length>6}}" class="loadmore">
+        <block wx:if="{{nomore}}">
+            <text>{{nomoreText}}</text>
+        </block>
+        <block wx:else>
+            <text class="iconfont icon-loading loading" space="nbsp"></text>
+            <text>{{loadmoreText}}</text>
+        </block>
+    </view>
+</view>

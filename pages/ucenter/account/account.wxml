@@ -1,0 +1,25 @@
+<view class="separate"></view>
+<view>
+    <view>
+        <view class="login-title">关联支付宝账户</view>
+        <form bindsubmit="bindLoginMobilecode">
+            <view class="login">
+                <view class="first-line">
+                    <input type="digit" name="mobile" bindinput="bindInputAccount" placeholder="输入支付宝账号"
+                           value="{{accountCode}}" auto-focus/>
+                </view>
+                <view class="first-line">
+                    <input type="digit" name="mobile" bindinput="bindInputMobile" placeholder="输入手机号" value="{{mobile}}"
+                           auto-focus/>
+                </view>
+                <view class="first-line">
+                    <input type="digit" name="mobile" bindinput="bindInputName" placeholder="输入姓名" value="{{name}}"
+                           auto-focus/>
+                </view>
+            </view>
+            <view class="third-line">
+                <button formType="submit">提交</button>
+            </view>
+        </form>
+    </view>
+</view>

@@ -29,36 +29,41 @@ function request(url, data = {}, method = "GET") {
             method: method,
             header: {
                 'Content-Type': 'application/json',
-                'X-Nideshop-Token': wx.getStorageSync('token')
+                'token': wx.getStorageSync('token')
             },
             success: function (res) {
-                console.log("success");
-
-                if (res.statusCode == 200) {
-
-                    if (res.data.errno == 401) {
-                        //需要登录后才可以操作
-                        wx.showModal({
-                            title: '',
-                            content: '请先登录',
-                            success: function (res) {
-                                if (res.confirm) {
-                                    wx.removeStorageSync("userInfo");
-                                    wx.removeStorageSync("token");
-
-                                    wx.switchTab({
-                                        url: '/pages/ucenter/index/index'
-                                    });
-                                }
-                            }
-                        });
-                    } else {
-                        resolve(res.data);
-                    }
-                } else {
-                    reject(res.errMsg);
+                console.log(url + "success");
+                if (res.data.status === 2) {
+                    wx.showModal({
+                        title: '',
+                        content: '请先登录',
+                        success: function (res) {
+                            wx.removeStorageSync("userInfo");
+                            wx.removeStorageSync("token");
+                            wx.switchTab({
+                                url: '/pages/ucenter/index/index'
+                            });
+                        }
+                    });
                 }
-
+                if (res.data.status == 1007) {
+                    wx.showModal({
+                        title: '',
+                        content: '请先备案',
+                        success: function (res) {
+                            wx.switchTab({
+                                url: '/pages/ucenter/index/index'
+                            });
+                        }
+                    });
+                }
+                if (!res.status === 1) {
+                    wx.showToast({
+                        title: res.message,
+                        duration: 1000
+                    })
+                }
+                resolve(res.data);
             },
             fail: function (err) {
                 reject(err)
@@ -82,6 +87,26 @@ function checkSession() {
             }
         })
     });
+}
+
+function formatTimeTwo(number, format) {
+
+    var formateArr = ['Y', 'M', 'D', 'h', 'm', 's'];
+    var returnArr = [];
+
+    var date = new Date(number * 1000);
+    returnArr.push(date.getFullYear());
+    returnArr.push(formatNumber(date.getMonth() + 1));
+    returnArr.push(formatNumber(date.getDate()));
+
+    returnArr.push(formatNumber(date.getHours()));
+    returnArr.push(formatNumber(date.getMinutes()));
+    returnArr.push(formatNumber(date.getSeconds()));
+
+    for (var i in returnArr) {
+        format = format.replace(formateArr[i], returnArr[i]);
+    }
+    return format;
 }
 
 /**
@@ -148,6 +173,7 @@ function randomNum(minNum, maxNum) {
             break;
     }
 }
+
 function cacheUnique(arr) {
     if (!Array.isArray(arr)) {
         console.log('type error!')
@@ -168,6 +194,31 @@ function cacheUnique(arr) {
     }
     return res
 }
+/**
+ * 时间戳转化为年 月 日 时 分 秒
+ * number: 传入时间戳
+ * format：返回格式，支持自定义，但参数必须与formateArr里保持一致
+ */
+function formatTimeTwo(number, format) {
+
+    var formateArr = ['Y', 'M', 'D', 'h', 'm', 's'];
+    var returnArr = [];
+
+    var date = new Date(number * 1000);
+    returnArr.push(date.getFullYear());
+    returnArr.push(formatNumber(date.getMonth() + 1));
+    returnArr.push(formatNumber(date.getDate()));
+
+    returnArr.push(formatNumber(date.getHours()));
+    returnArr.push(formatNumber(date.getMinutes()));
+    returnArr.push(formatNumber(date.getSeconds()));
+
+    for (var i in returnArr) {
+        format = format.replace(formateArr[i], returnArr[i]);
+    }
+    return format;
+}
+
 module.exports = {
     formatTime,
     request,
@@ -177,7 +228,9 @@ module.exports = {
     checkSession,
     login,
     randomNum,
-    cacheUnique
+    cacheUnique,
+    formatTime: formatTime,
+    formatTimeTwo: formatTimeTwo
 }
 
 

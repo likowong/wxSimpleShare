@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<wxs module="filter" src="../index/index.wxs"></wxs>
+<view class="container">
+
+
+    <view class="a-section a-new" wx:if="{{newGoods.length > 0}}">
+        <view class="h">
+            <view>
+                <navigator url="../newGoods/newGoods">
+                    <text class="txt">{{materialName}}</text>
+                </navigator>
+            </view>
+        </view>
+        <view class="b">
+            <view class="item" wx:for="{{newGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
+                <navigator url="/pages/brandDetail/brandDetail?brandId={{item.item_id}}&couponAmount={{item.coupon_amount}}&twdUrl={{filter.urlEncode(item.coupon_share_url)}}">
+                    <image class="img" src="{{item.pict_url}}" background-size="cover"></image>
+                    <text class="name">{{item.level_one_category_name}}{{item.coupon_info}}</text>
+                    <text class="price">￥{{item.reserve_price}} 销量{{item.volume}}</text>
+                    <text class="price" wx:wx:if="{{item.coupon_amount != ''}}">卷￥{{item.coupon_amount}}</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>

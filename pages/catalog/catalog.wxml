@@ -6,29 +6,14 @@
             <text class="txt">商品搜索</text>
         </navigator>
     </view>
-    <!--    <view wx:for="{{newGoods}}" wx:for-index="index" wx:for-item="item"-->
-    <!--          wx:key="{{item.id}}">-->
-    <!--        <view class="a-section a-topic">-->
-    <!--            <view class="h">-->
-    <!--                <view>-->
-    <!--                    <navigator url="../topic/topic" open-type="switchTab">-->
-    <!--                        <text class="txt">{{item.materialName}}</text>-->
-    <!--                    </navigator>-->
-    <!--                </view>-->
-    <!--            </view>-->
-    <!--            <view class="b">-->
-    <!--                <view class="item" wx:for="{{item.goodsData}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">-->
-    <!--                    <navigator url="../goods/goods?id={{item.id}}">-->
-    <!--                        <image class="img" src="{{item.pict_url}}" background-size="cover"></image>-->
-    <!--                        <text class="name">{{item.level_one_category_name}}{item.coupon_info}}</text>-->
-    <!--                        <text class="price">￥{{item.reserve_price}} 销量{{item.volume}}</text>-->
-    <!--                        <text class="price">卷￥{{item.coupon_amount}}</text>-->
-    <!--                        <text class="price"></text>-->
-    <!--                    </navigator>-->
-    <!--                </view>-->
-    <!--            </view>-->
-    <!--        </view>-->
-    <!--    </view>-->
+    <view class="m-menu">
+        <navigator class="item" url="/pages/meterialDetail/meterialDetail?materialId={{item.materialId}}&materialName={{item.materialName}}" wx:for="{{validMaterial}}" wx:key="{{item.id}}">
+            <navigator url="/pages/catalog/catalog">
+                <image src="{{item.iconUrl}}" background-size="cover"></image>
+                <text>{{item.materialName}}</text>
+            </navigator>
+        </navigator>
+    </view>
     <view wx:for="{{newGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
         <view class="a-section a-new">
             <view class="h">

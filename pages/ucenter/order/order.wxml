@@ -1,0 +1,39 @@
+<view class='topTabSwiper'>
+    <view class='tab  {{orderStatus == 12 ? "tabBorer" : ""}}' data-current="12" bindtap='checkCurrent'>订单付款</view>
+    <view class='tab  {{orderStatus == 13 ? "tabBorer" : ""}}' data-current="13" bindtap='checkCurrent'>订单关闭</view>
+    <view class='tab  {{orderStatus == 14 ? "tabBorer" : ""}}' data-current="14" bindtap='checkCurrent'>订单成功</view>
+</view>
+<view class="container">
+
+    <view class="orders">
+        <navigator url="" class="order"
+                   wx:for="{{orderList}}" wx:key="{{item.id}}">
+            <view class="h">
+                <view class="l">订单编号：{{item.tradeId}}</view>
+                <view class="r">{{orderStatusName}}</view>
+            </view>
+            <view class="h">
+                <text class="name">创建时间：{{item.tbPaidTime}}</text>
+            </view>
+            <view class="img">
+                <image src="https:{{item.itemImg}}"></image>
+            </view>
+
+            <view class="status"></view>
+            <view class="b">
+                <view class="l">实付：￥{{item.alipayTotalPrice}}</view>
+                <view class="r">{{amountStatusName}}：￥{{item.pubSharePreFee}}</view>
+            </view>
+        </navigator>
+    </view>
+
+    <view wx:if="{{orderList.length>6}}" class="loadmore">
+        <block wx:if="{{nomore}}">
+            <text>{{nomoreText}}</text>
+        </block>
+        <block wx:else>
+            <text class="iconfont icon-loading loading" space="nbsp"></text>
+            <text>{{loadmoreText}}</text>
+        </block>
+    </view>
+</view>

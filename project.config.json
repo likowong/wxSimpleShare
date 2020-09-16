@@ -34,7 +34,7 @@
   "compileType": "miniprogram",
   "libVersion": "1.9.0",
   "appid": "wx101ac7b32ffa3309",
-  "projectname": "wxshop20180822",
+  "projectname": "WxSimpleShare",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
@@ -58,27 +58,21 @@
       "list": [
         {
           "id": 0,
-          "name": "选择优惠券",
-          "pathName": "pages/shopping/selCoupon/selCoupon",
+          "name": "首页",
+          "pathName": "pages/index/index",
           "query": "isBuy=false"
         },
         {
           "id": -1,
-          "name": "订单界面",
-          "pathName": "pages/shopping/checkout/checkout",
+          "name": "查询优惠卷",
+          "pathName": "pages/catalog/catalog",
           "query": "isBuy=true"
         },
         {
           "id": -1,
-          "name": "我的优惠券",
-          "pathName": "pages/ucenter/coupon/coupon",
+          "name": "我的",
+          "pathName": "pages/ucenter/index/index",
           "query": "isBuy=true"
-        },
-        {
-          "id": -1,
-          "name": "我的订单",
-          "pathName": "pages/ucenter/order/order",
-          "query": ""
         }
       ]
     }

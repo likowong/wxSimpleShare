@@ -5,6 +5,11 @@
     "pages/newGoods/newGoods",
     "pages/ucenter/index/index",
     "pages/brandDetail/brandDetail",
+    "pages/ucenter/record/record",
+    "pages/ucenter/order/order",
+    "pages/ucenter/collection/collection",
+    "pages/ucenter/account/account",
+    "pages/meterialDetail/meterialDetail",
     "pages/search/search"
   ],
   "window": {

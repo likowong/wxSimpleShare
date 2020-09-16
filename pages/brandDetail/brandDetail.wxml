@@ -38,6 +38,7 @@
                     <view class="imgs" wx:if="{{comment.data.pic_list.length > 0}}">
                         <image class="img" wx:for="{{comment.data.pic_list}}" wx:key="{{item.id}}" src="{{item.pic_url}}"></image>
                     </view>
+
                 </view>
             </view>
         </view>
@@ -61,5 +62,6 @@
 <view class="detail-nav">
     <view class="line_nav"></view>
     <button class="button-green" open-type="share" formType="submit">分享</button>
+    <button class="button-blue" bindtap="addGoodsCollection" formType="submit">收藏</button>
     <button class="button-red" bindtap="createTwd" formType="submit">领取优惠卷</button>
 </view>

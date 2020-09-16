@@ -1,0 +1,37 @@
+<view wx:if="{{isRecord}}">
+    <scroll-view class="container" style="height: {{winHeight}}rpx" scroll-y="true">
+
+        <view class="h">
+            <text class="i">1.领取邀请码打开tb</text>
+        </view>
+        <view class="recordImages">
+            <image class="img" src="../../../static/images/record/1.png"></image>
+        </view>
+        <view class="h">
+            <text class="i">2.成为玲宝生活推广者</text>
+        </view>
+        <view class="recordImages">
+            <image class="img" src="../../../static/images/record/2.png"></image>
+        </view>
+        <view class="h">
+            <text class="i">3.提交申请</text>
+        </view>
+        <view class="recordImages">
+            <image class="img" src="../../../static/images/record/3.png"></image>
+        </view>
+        <view class="h">
+            <text class="i">4.回到小程序查看</text>
+        </view>
+        <view class="recordImages">
+            <image class="img" src="../../../static/images/record/4.png"></image>
+        </view>
+        <view class="h">
+            <text class="i"></text>
+        </view>
+    </scroll-view>
+    <!-- 底部悬浮栏 -->
+    <view class="detail-nav">
+        <view class="line_nav"></view>
+        <button class="button-red" bindtap="createTwd" formType="submit">领取邀请码</button>
+    </view>
+</view>

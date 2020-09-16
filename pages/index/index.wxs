@@ -4,7 +4,32 @@ var filter = {
         return encodeURIComponent(url)
     }
 }
+var formatTime = function (date) {
+    var date = getDate(date)
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    var day = date.getDate()
+    var hour = date.getHours()
+    var minute = date.getMinutes()
+    var second = date.getSeconds()
+
+    return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+var formatNumber = function(n) {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+}
+var subString = function(n){
+    n = n.toString()
+    return n.substring(0,15);
+}
+
+
 // 导出对外暴露的属性
 module.exports = {
-    urlEncode: filter.urlEncode
+    urlEncode: filter.urlEncode,
+    formatTime: formatTime,
+    formatNumber: formatNumber,
+    subString:subString
 }

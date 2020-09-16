@@ -8,14 +8,7 @@
             </navigator>
         </swiper-item>
     </swiper>
-    <view class="m-menu">
-        <navigator class="item" url="/pages/catalog/catalog" wx:for="{{validMaterial}}" wx:key="{{item.id}}">
-            <navigator url="/pages/catalog/catalog">
-                <image src="{{item.iconUrl}}" background-size="cover"></image>
-                <text>{{item.materialName}}</text>
-            </navigator>
-        </navigator>
-    </view>
+
     <view class="a-section a-new" wx:if="{{newGoods.length > 0}}">
         <view class="h">
             <view>
@@ -84,6 +77,4 @@
     <!--      </view>-->
     <!--    </view>-->
     <!--  </view>-->
-
-    <button open-type="contact"/>
 </view>

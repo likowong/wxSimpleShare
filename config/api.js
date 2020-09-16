@@ -1,7 +1,7 @@
 // 线上环境
-var NewApiRootUrl = 'https://fastgo.icu/share/';
+//var NewApiRootUrl = 'https://fastgo.icu/share/';
 // 开发环境
-//var NewApiRootUrl = 'http://192.168.0.2:8000/';
+var NewApiRootUrl = 'http://192.168.0.2:8000/';
 
 module.exports = {
     IndexUrlMaterial: NewApiRootUrl + '/data/config/v1/MaterialService/getListMaterial', //首页数据接口
@@ -16,6 +16,12 @@ module.exports = {
     SearchHelper: NewApiRootUrl + 'data/config/v1/MaterialService/searchGoods',  //搜索数据
     SearchClearHistory: NewApiRootUrl + 'search/clearhistory',  //搜索帮助
     Login: NewApiRootUrl + 'data/config/v1/MemberService/login', //账号登录
-
-
+    createInviterCodeResultTbCode: NewApiRootUrl + 'data/api/v1/MemberTaobaoService/createInviterCodeResultTbCode', //领取邀请码
+    tbkInfoSave: NewApiRootUrl + 'data/api/v1/MemberTaobaoService/tbkInfoSave', //是否备案
+    pageOrderInfo: NewApiRootUrl + 'data/api/v1/TaobaoOrderService/getPageTaobaoOrderDo', //订单信息
+    getMemberAmount: NewApiRootUrl + 'data/api/v1/MemberAmountService/getMemberAmountVo', //获取个人收益
+    addCollection: NewApiRootUrl + 'data/api/v1/MemberCollectionService/addCollection', //商品收藏
+    pageCollection: NewApiRootUrl + 'data/api/v1/MemberCollectionService/getPageMemberCollectionDo', //获取收藏
+    addMemberAliAccountVo: NewApiRootUrl + 'data/api/v1/MemberAliAccountService/addMemberAliAccountVo', //添加账户
+    getMemberAliAccount: NewApiRootUrl + 'data/api/v1/MemberAliAccountService/getMemberAliAccount', //获取账户
 };

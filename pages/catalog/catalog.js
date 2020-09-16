@@ -4,9 +4,19 @@ var api = require('../../config/api.js');
 Page({
     data: {
         newGoods: [],
+        validMaterial: [],
     },
     onLoad: function (options) {
+        var that =this;
+        let data = new Object();
         this.getCatalog();
+        // 获取有效类目
+        util.request(api.IndexUrlValidCategory, '', 'POST').then(function (res) {
+            if (res.status === 1) {
+                data.validMaterial = res.content;
+                that.setData(data);
+            }
+        });
     },
 
     onPullDownRefresh() {

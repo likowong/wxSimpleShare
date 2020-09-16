@@ -70,6 +70,25 @@ Page({
             }
         });
     },
+    addGoodsCollection: function () {
+        var that = this;
+        let twdUrl = "https:" + that.data.twdUrl
+        let reqData = {
+            goodsId: that.data.brandId,
+            goodsImg: that.data.brandData.pict_url,
+            goodsImgShareUrl: twdUrl,
+            goodsTitle: that.data.brandData.title,
+            couponAmount:that.data.couponAmount
+        }
+        util.request(api.addCollection, reqData, "POST").then(function (res) {
+            if (res.status === 1) {
+                wx.showToast({
+                    title: '收藏成功',
+                    duration: 1000
+                })
+            }
+        });
+    },
     onPullDownRefresh() {
         // 显示顶部刷新图标
         wx.showNavigationBarLoading();

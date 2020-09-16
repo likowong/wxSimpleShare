@@ -7,17 +7,12 @@ Page({
     data: {
         userInfo: {},
         token: '',
-        hasMobile: ''
+        hasMobile: '',
+        memberAmountVo: ''
     },
     onLoad: function (options) {
-        // 页面初始化 options为页面跳转所带来的参数
-        console.log(app.globalData)
-    },
-    onReady: function () {
-
-    },
-    onShow: function () {
-
+        var self = this;
+        this.onShow();
         let userInfo = wx.getStorageSync('userInfo');
         let token = wx.getStorageSync('token');
 
@@ -31,7 +26,30 @@ Page({
             userInfo: app.globalData.userInfo,
             token: app.globalData.token,
         });
+    },
+    onReady: function () {
 
+    },
+    onShow: function (options) {
+        var self = this;
+        let userInfo = wx.getStorageSync('userInfo');
+        let token = wx.getStorageSync('token');
+
+        // 页面显示
+        if (userInfo && token) {
+            app.globalData.userInfo = userInfo;
+            app.globalData.token = token;
+            this.getMemberAmount();
+        } else {
+            this.setData({
+                userInfo: {
+                    nickName: 'Hi,游客',
+                    userName: '点击去登录',
+                    avatarUrl: 'https://platform-wxmall.oss-cn-beijing.aliyuncs.com/upload/20180727/150547696d798c.png'
+                },
+                token: '',
+            });
+        }
     },
     onHide: function () {
         // 页面隐藏
@@ -55,6 +73,7 @@ Page({
                 });
                 app.globalData.userInfo = res.content;
                 app.globalData.token = res.content.token;
+                this.onReady();
             }).catch((err) => {
                 console.log(err)
             });
@@ -74,6 +93,7 @@ Page({
                                         });
                                         app.globalData.userInfo = res.content;
                                         app.globalData.token = res.content.token;
+                                        this.onReady();
                                     }).catch((err) => {
                                         console.log(err)
                                     });
@@ -92,6 +112,24 @@ Page({
         // 增加下拉刷新数据的功能
         var self = this;
         this.onShow();
+        let userInfo = wx.getStorageSync('userInfo');
+        let token = wx.getStorageSync('token');
+
+        // 页面显示
+        if (userInfo && token) {
+            app.globalData.userInfo = userInfo;
+            app.globalData.token = token;
+        } else {
+            this.setData({
+                userInfo: {},
+                token: '',
+            });
+        }
+
+        this.setData({
+            userInfo: app.globalData.userInfo,
+            token: app.globalData.token,
+        });
         // 隐藏导航栏加载框
         wx.hideNavigationBarLoading();
         // 停止下拉动作
@@ -116,12 +154,14 @@ Page({
         })
 
     },
-
-    aboutUs: function () {
-        wx.showModal({
-            title: '联系我们',
-            content: '【微信&手机】联系: 15010343670，祝大家使用愉快！',
-            showCancel: false
-        })
+    getMemberAmount: function(){
+        var that = this;
+        util.request(api.getMemberAmount, '', "POST").then(function (res) {
+            if (res.status === 1) {
+                that.setData({
+                    memberAmountVo: res.content,
+                });
+            }
+        });
     },
 })
