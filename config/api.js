@@ -12,6 +12,7 @@ module.exports = {
     AuthLoginByWeixin: NewApiRootUrl + 'data/config/v1/MemberService/login', //微信登录
     GoodsDetail: NewApiRootUrl + 'data/config/v1/MaterialService/getGoodsDetail',  //获得商品的详情
     createTpw: NewApiRootUrl + 'data/config/v1/MaterialService/createTpw',  //生成淘口令
+    createTpwWithToken: NewApiRootUrl + 'data/api/v1/MaterialService/createTpwWithToken',  //生成已登录的淘口令
     GoodsHot: NewApiRootUrl + 'data/config/v1/MaterialService/getHotKey',  //热门
     SearchHelper: NewApiRootUrl + 'data/config/v1/MaterialService/searchGoods',  //搜索数据
     SearchClearHistory: NewApiRootUrl + 'search/clearhistory',  //搜索帮助

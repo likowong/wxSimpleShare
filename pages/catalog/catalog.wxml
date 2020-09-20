@@ -29,7 +29,7 @@
                             url="/pages/brandDetail/brandDetail?brandId={{goodsKey.item_id}}&couponAmount={{goodsKey.coupon_amount}}&twdUrl={{filter.urlEncode(goodsKey.coupon_share_url)}}">
                         <image class="img" src="{{goodsKey.pict_url}}" background-size="cover"></image>
                         <text class="name">{{goodsKey.level_one_category_name}}{{goodsKey.coupon_info}}</text>
-                        <text class="price">￥{{goodsKey.reserve_price}} 销量{{goodsKey.volume}}</text>
+                        <text class="price">￥{{goodsKey.zk_final_price}} 销量{{goodsKey.volume}}</text>
                         <text class="price">卷￥{{goodsKey.coupon_amount}}</text>
                     </navigator>
                 </view>

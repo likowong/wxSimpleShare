@@ -53,22 +53,44 @@ Page({
         let url = "https:" + that.data.twdUrl
         let text = "复制口令到tb或tm领取优惠卷"
         let reqData = {text: text, url: url}
-        util.request(api.createTpw, reqData, "POST").then(function (res) {
-            if (res.status === 1) {
-                if (!JSON.parse(res.content).tbk_tpwd_create_response) {
-                    return
-                }
-                wx.setClipboardData({
-                    data: JSON.parse(res.content).tbk_tpwd_create_response.data.password_simple,
-                    success: function () {
-                        wx.showToast({
-                            title: '淘口令复制成功',
-                            duration: 2000
-                        })
+        let token = wx.getStorageSync('token');
+        if (!token) {
+            util.request(api.createTpw, reqData, "POST").then(function (res) {
+                if (res.status === 1) {
+                    if (!JSON.parse(res.content).tbk_tpwd_create_response) {
+                        return
                     }
-                })
-            }
-        });
+                    wx.setClipboardData({
+                        data: JSON.parse(res.content).tbk_tpwd_create_response.data.password_simple,
+                        success: function () {
+                            wx.showToast({
+                                title: '淘口令复制成功',
+                                duration: 2000
+                            })
+                        }
+                    })
+                }
+            });
+        } else {
+            util.request(api.createTpwWithToken, reqData, "POST").then(function (res) {
+                if (res.status === 1) {
+                    if (!JSON.parse(res.content).tbk_tpwd_create_response) {
+                        return
+                    }
+                    wx.setClipboardData({
+                        data: JSON.parse(res.content).tbk_tpwd_create_response.data.password_simple,
+                        success: function () {
+                            wx.showToast({
+                                title: '淘口令复制成功',
+                                duration: 2000
+                            })
+                        }
+                    })
+                }
+            });
+        }
+
+
     },
     addGoodsCollection: function () {
         var that = this;
@@ -78,7 +100,7 @@ Page({
             goodsImg: that.data.brandData.pict_url,
             goodsImgShareUrl: twdUrl,
             goodsTitle: that.data.brandData.title,
-            couponAmount:that.data.couponAmount
+            couponAmount: that.data.couponAmount
         }
         util.request(api.addCollection, reqData, "POST").then(function (res) {
             if (res.status === 1) {
