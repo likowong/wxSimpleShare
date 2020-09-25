@@ -94,23 +94,22 @@ button {
 .temp {
     height: 100rpx;
 }
-text {
+text.i {
     display: block;
-    height: 120rpx;
+    height: 60rpx;
     line-height: 60rpx;
     font-size: 30rpx;
     margin: 10rpx;
+}
+.container .recordImages .img{
+    width: 100%;
+    height: 600px;
+    background-size: cover;
 }
 .text-remark {
     display: block;
     font-size: 30rpx;
     margin: 10rpx;
-}
-
-
-
-.container{
-    /* margin-bottom: 100rpx; */
 }
 .goodsimgs{
     width: 750rpx;
@@ -828,4 +827,7 @@ text {
     height: 68rpx!important;
     width: 100%;
     background: #fff;
+}
+.h .i{
+    font-size: 20px;
 }

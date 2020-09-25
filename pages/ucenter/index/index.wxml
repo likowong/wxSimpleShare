@@ -39,7 +39,7 @@
         <view class="item">
             <view class="a">
                 <image class="icon contact" src="/static/images/lx.png"></image>
-                <button  open-type="contact">联系我们</button>
+                <button class="linkusBtn"  open-type="contact">联系我们</button>
             </view>
         </view>
     </view>

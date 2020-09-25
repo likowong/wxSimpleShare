@@ -230,3 +230,8 @@ page{
  height: 100rpx;
 }
 
+.linkusBtn{
+   
+    font-size: 24rpx;
+    color:#333;
+}

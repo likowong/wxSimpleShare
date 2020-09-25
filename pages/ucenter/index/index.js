@@ -26,6 +26,9 @@ Page({
             userInfo: app.globalData.userInfo,
             token: app.globalData.token,
         });
+        if (wx.getStorageSync('token')) {
+            this.getMemberAmount();
+        }
     },
     onReady: function () {
 
@@ -39,7 +42,6 @@ Page({
         if (userInfo && token) {
             app.globalData.userInfo = userInfo;
             app.globalData.token = token;
-            this.getMemberAmount();
         } else {
             this.setData({
                 userInfo: {
@@ -49,6 +51,9 @@ Page({
                 },
                 token: '',
             });
+        }
+        if (wx.getStorageSync('token')) {
+            this.getMemberAmount();
         }
     },
     onHide: function () {
@@ -73,7 +78,9 @@ Page({
                 });
                 app.globalData.userInfo = res.content;
                 app.globalData.token = res.content.token;
-                this.onReady();
+                if (wx.getStorageSync('token')) {
+                    this.getMemberAmount();
+                }
             }).catch((err) => {
                 console.log(err)
             });
@@ -93,7 +100,9 @@ Page({
                                         });
                                         app.globalData.userInfo = res.content;
                                         app.globalData.token = res.content.token;
-                                        this.onReady();
+                                        if (wx.getStorageSync('token')) {
+                                            this.getMemberAmount();
+                                        }
                                     }).catch((err) => {
                                         console.log(err)
                                     });
@@ -104,6 +113,7 @@ Page({
                 }
             });
         }
+
     },
 
     onPullDownRefresh() {
@@ -154,7 +164,7 @@ Page({
         })
 
     },
-    getMemberAmount: function(){
+    getMemberAmount: function () {
         var that = this;
         util.request(api.getMemberAmount, '', "POST").then(function (res) {
             if (res.status === 1) {

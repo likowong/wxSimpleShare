@@ -66,6 +66,8 @@ page {
   display: flex;
   height: 181rpx;
   width: 750rpx;
+  margin-top: 80rpx;
+  margin-bottom: 40rpx;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
@@ -93,6 +95,7 @@ page {
   margin: 0 auto;
   line-height: 1;
   color: #333;
+  height: 24rpx;
 }
 
 .a-section {
@@ -187,9 +190,7 @@ page {
 .a-new .b .item {
   float: left;
   width: 302rpx;
-  margin-top: 10rpx;
-  margin-left: 21rpx;
-  margin-right: 21rpx;
+  margin:10rpx 21rpx;
 }
 
 .a-new .b .item-b {
@@ -205,8 +206,8 @@ page {
   text-align: center;
   display: block;
   width: 302rpx;
-  height: 35rpx;
-  margin-bottom: 14rpx;
+  height: 40rpx;
+  line-height: 40rpx;
   overflow: hidden;
   font-size: 30rpx;
   color: #333;
@@ -275,14 +276,52 @@ page {
   font-size: 25rpx;
 }
 
-.a-popular .b .price {
-  width: 456rpx;
+.a-new .b .priceInfo{
   display: block;
-  color: #b4282d;
-  line-height: 50rpx;
-  font-size: 33rpx;
+  line-height: 40rpx;
+  height: 40rpx;
 }
+.a-new .b .priceInfo .price{
 
+  float: left;
+  display: block;
+  color: red;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.a-new .b .priceInfo .sale{
+  float: right;
+  display: block;
+  font-size: 22rpx;
+  color:#000000a8;
+}
+.a-new .b .priceInfo .clear{
+  clear: both;
+}
+.a-new .b .coupon-item{
+  display: block;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+.a-new .b .coupon-item .left{
+  float: left;
+  width: 40%;
+  border:1px solid #ff0000d1;
+  height: 56rpx;
+  box-sizing: border-box;
+  border-radius: 4rpx;
+}
+.a-new .b .coupon-item .right{
+  float: right;
+  background:#ff0000d1;
+  color:white;
+  width:60%;
+  border-radius: 4rpx;
+}
+.a-new .b .coupon-item .right::after{
+  clear: both;
+}
 .a-topic .b {
   height: 533rpx;
   width: 750rpx;

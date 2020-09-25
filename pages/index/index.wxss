@@ -133,9 +133,7 @@
 .a-new .b .item {
   float: left;
   width: 302rpx;
-  margin-top: 10rpx;
-  margin-left: 21rpx;
-  margin-right: 21rpx;
+  margin:10rpx 21rpx;
 }
 
 .a-new .b .item-b {
@@ -151,21 +149,61 @@
   text-align: center;
   display: block;
   width: 302rpx;
-  height: 35rpx;
-  margin-bottom: 14rpx;
+  height: 40rpx;
+  line-height: 40rpx;
   overflow: hidden;
   font-size: 30rpx;
   color: #333;
 }
 
-.a-new .b .price {
+
+.a-new .b .priceInfo{
   display: block;
-  text-align: center;
-  line-height: 30rpx;
-  font-size: 30rpx;
-  color: #b4282d;
+  line-height: 40rpx;
+  height: 40rpx;
+}
+.a-new .b .priceInfo .price{
+
+  float: left;
+  display: block;
+  color: red;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.a-new .b .priceInfo .sale{
+  float: right;
+  display: block;
+  font-size: 22rpx;
+  color:#000000a8;
+}
+.a-new .b .priceInfo .clear{
+  clear: both;
 }
 
+.a-new .b .coupon-item{
+  display: block;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+.a-new .b .coupon-item .left{
+  float: left;
+  width: 40%;
+  border:1px solid #ff0000d1;
+  height: 56rpx;
+  box-sizing: border-box;
+  border-radius: 4rpx;
+}
+.a-new .b .coupon-item .right{
+  float: right;
+  background:#ff0000d1;
+  color:white;
+  width:60%;
+  border-radius: 4rpx;
+}
+.a-new .b .coupon-item .right::after{
+  clear: both;
+}
 .a-popular {
   width: 750rpx;
   height: auto;
@@ -229,6 +267,27 @@
   font-size: 33rpx;
 }
 
+.productItem{
+  margin-top: 10px 21px 0px;
+
+}
+.productItem-left{
+  float: left;
+  width: 35%;
+  width: 302px;
+  height: 302px;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+} 
+.productItem-right{
+  float:right;
+  width: 65%;
+  height: 302px;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
 .a-topic .b {
   height: 533rpx;
   width: 750rpx;

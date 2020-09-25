@@ -13,7 +13,7 @@
         <view class="goods-info">
             <view class="c">
                 <text class="name">{{brandData.title}}</text>
-                <text class="price">优惠卷￥{{couponAmount}}</text>
+                <text class="price">优惠券￥{{couponAmount}}</text>
             </view>
         </view>
         <view class="comments" wx:if="{{comment.count > 0}}">
@@ -63,5 +63,5 @@
     <view class="line_nav"></view>
     <button class="button-green" open-type="share" formType="submit">分享</button>
     <button class="button-blue" bindtap="addGoodsCollection" formType="submit">收藏</button>
-    <button class="button-red" bindtap="createTwd" formType="submit">领取优惠卷</button>
+    <button class="button-red" bindtap="createTwd" formType="submit">领取优惠券</button>
 </view>

@@ -22,15 +22,25 @@ function formatNumber(n) {
  * 封封微信的的request
  */
 function request(url, data = {}, method = "GET") {
-    return new Promise(function (resolve, reject) {
+    let header = '';
+    let token = wx.getStorageSync('token');
+    if (!token) {
+        header = {
+            'Content-Type': 'application/json'
+        }
+    } else {
+        header = {
+            'Content-Type': 'application/json',
+            'token': token
+        }
+    }
+    console.log(header)
+    let promise = new Promise(function (resolve, reject) {
         wx.request({
             url: url,
             data: data,
             method: method,
-            header: {
-                'Content-Type': 'application/json',
-                'token': wx.getStorageSync('token')
-            },
+            header: header,
             success: function (res) {
                 console.log(url + "success");
                 if (res.data.status === 2) {
@@ -71,6 +81,7 @@ function request(url, data = {}, method = "GET") {
             }
         })
     });
+    return promise;
 }
 
 /**
@@ -194,6 +205,7 @@ function cacheUnique(arr) {
     }
     return res
 }
+
 /**
  * 时间戳转化为年 月 日 时 分 秒
  * number: 传入时间戳

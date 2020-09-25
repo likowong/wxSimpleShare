@@ -1,7 +1,7 @@
 // 线上环境
-//var NewApiRootUrl = 'https://fastgo.icu/share/';
+var NewApiRootUrl = 'https://fastgo.icu/share/';
 // 开发环境
-var NewApiRootUrl = 'http://192.168.0.2:8000/';
+//var NewApiRootUrl = 'http://192.168.0.2:8000/';
 
 module.exports = {
     IndexUrlMaterial: NewApiRootUrl + '/data/config/v1/MaterialService/getListMaterial', //首页数据接口
