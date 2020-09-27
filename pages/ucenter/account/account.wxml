@@ -5,15 +5,15 @@
         <form bindsubmit="bindLoginMobilecode">
             <view class="login">
                 <view class="first-line">
-                    <input type="digit" name="mobile" bindinput="bindInputAccount" placeholder="输入支付宝账号"
+                    <input type="text" name="mobile" bindinput="bindInputAccount" placeholder="输入支付宝账号"
                            value="{{accountCode}}" auto-focus/>
                 </view>
                 <view class="first-line">
-                    <input type="digit" name="mobile" bindinput="bindInputMobile" placeholder="输入手机号" value="{{mobile}}"
+                    <input type="number" name="mobile" bindinput="bindInputMobile" placeholder="输入手机号" value="{{mobile}}"
                            auto-focus/>
                 </view>
                 <view class="first-line">
-                    <input type="digit" name="mobile" bindinput="bindInputName" placeholder="输入姓名" value="{{name}}"
+                    <input type="text" name="mobile" bindinput="bindInputName" placeholder="输入姓名" value="{{name}}"
                            auto-focus/>
                 </view>
             </view>

@@ -51,7 +51,7 @@ Page({
     createTwd: function () {
         var that = this;
         let url = "https:" + that.data.twdUrl
-        let text = "复制口令到tb或tm领取优惠卷"
+        let text = "领取优惠卷"
         let reqData = {text: text, url: url}
         let token = wx.getStorageSync('token');
         if (!token) {
@@ -64,7 +64,7 @@ Page({
                         data: JSON.parse(res.content).tbk_tpwd_create_response.data.password_simple,
                         success: function () {
                             wx.showToast({
-                                title: '淘口令复制成功',
+                                title: '复制成功',
                                 duration: 2000
                             })
                         }

@@ -470,3 +470,6 @@ page {
   width: 70rpx;
   height: 70rpx;
 }
+.newGoods{
+  height: 30%;
+}

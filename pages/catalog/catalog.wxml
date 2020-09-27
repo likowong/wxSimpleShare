@@ -14,6 +14,7 @@
             </navigator>
         </navigator>
     </view>
+    <view  class="newGoods">
     <view wx:for="{{newGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
         <view class="a-section a-new">
             <view class="h">
@@ -45,4 +46,5 @@
             </view>
         </view>
     </view>
+</view>
 </view>
